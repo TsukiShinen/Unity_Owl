@@ -3,64 +3,67 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class SceneAttribute : PropertyAttribute { }
-
-[CustomPropertyDrawer(typeof(SceneAttribute))]
-public class SceneDrawer : PropertyDrawer
+namespace OwlEditor
 {
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    public class SceneAttribute : PropertyAttribute { }
+
+    [CustomPropertyDrawer(typeof(SceneAttribute))]
+    public class SceneDrawer : PropertyDrawer
     {
-        EditorGUI.BeginProperty(position, label, property);
-
-        if (property.propertyType == SerializedPropertyType.String)
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            EditorGUI.BeginChangeCheck();
+            EditorGUI.BeginProperty(position, label, property);
 
-            string[] scenePaths = EditorBuildSettings.scenes
-                .Where(scene => scene.enabled)
-                .Select(scene => scene.path)
-                .ToArray();
-
-            string[] sceneNames = scenePaths
-                .Select(scenePath => System.IO.Path.GetFileNameWithoutExtension(scenePath))
-                .ToArray();
-
-            int selectedIndex = Mathf.Max(0, Array.IndexOf(scenePaths, property.stringValue));
-
-            selectedIndex = EditorGUI.Popup(position, label.text, selectedIndex, sceneNames);
-
-            if (EditorGUI.EndChangeCheck())
+            if (property.propertyType == SerializedPropertyType.String)
             {
-                property.stringValue = sceneNames[selectedIndex];
+                EditorGUI.BeginChangeCheck();
+
+                string[] scenePaths = EditorBuildSettings.scenes
+                    .Where(scene => scene.enabled)
+                    .Select(scene => scene.path)
+                    .ToArray();
+
+                string[] sceneNames = scenePaths
+                    .Select(scenePath => System.IO.Path.GetFileNameWithoutExtension(scenePath))
+                    .ToArray();
+
+                int selectedIndex = Mathf.Max(0, Array.IndexOf(scenePaths, property.stringValue));
+
+                selectedIndex = EditorGUI.Popup(position, label.text, selectedIndex, sceneNames);
+
+                if (EditorGUI.EndChangeCheck())
+                {
+                    property.stringValue = sceneNames[selectedIndex];
+                }
             }
-        }
-        else if (property.propertyType == SerializedPropertyType.Integer)
-        {
-            EditorGUI.BeginChangeCheck();
-
-            string[] scenePaths = EditorBuildSettings.scenes
-                .Where(scene => scene.enabled)
-                .Select(scene => scene.path)
-                .ToArray();
-
-            string[] sceneNames = scenePaths
-                .Select(scenePath => System.IO.Path.GetFileNameWithoutExtension(scenePath))
-                .ToArray();
-
-            int selectedIndex = Mathf.Max(0, property.intValue);
-
-            selectedIndex = EditorGUI.Popup(position, label.text, selectedIndex, sceneNames);
-
-            if (EditorGUI.EndChangeCheck())
+            else if (property.propertyType == SerializedPropertyType.Integer)
             {
-                property.intValue = selectedIndex;
-            }
-        }
-        else
-        {
-            EditorGUI.LabelField(position, label.text, "Use Scene Attribute with string or int fields only.");
-        }
+                EditorGUI.BeginChangeCheck();
 
-        EditorGUI.EndProperty();
+                string[] scenePaths = EditorBuildSettings.scenes
+                    .Where(scene => scene.enabled)
+                    .Select(scene => scene.path)
+                    .ToArray();
+
+                string[] sceneNames = scenePaths
+                    .Select(scenePath => System.IO.Path.GetFileNameWithoutExtension(scenePath))
+                    .ToArray();
+
+                int selectedIndex = Mathf.Max(0, property.intValue);
+
+                selectedIndex = EditorGUI.Popup(position, label.text, selectedIndex, sceneNames);
+
+                if (EditorGUI.EndChangeCheck())
+                {
+                    property.intValue = selectedIndex;
+                }
+            }
+            else
+            {
+                EditorGUI.LabelField(position, label.text, "Use Scene Attribute with string or int fields only.");
+            }
+
+            EditorGUI.EndProperty();
+        }
     }
 }
