@@ -292,6 +292,7 @@ MonoBehaviour:
   _sceneName: 
   _sceneId: 0
   _enumPaging: 1
+  _enumPagingWithDebug: 0
 --- !u!4 &2110931977
 Transform:
   m_ObjectHideFlags: 0
