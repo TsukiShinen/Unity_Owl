@@ -1,22 +1,9 @@
-﻿
-
-using Owl.ditor;
+﻿using OwlAttribute;
 using UnityEditor;
 using UnityEngine;
-using static UnityEngine.UI.InputField;
 
 namespace OwlEditor
 {
-    public class TitleAttribute : PropertyAttribute
-    {
-        public string Name { get; }
-
-        public TitleAttribute (string name = "New Title")
-        {
-            Name = name;
-        }
-    }
-
     [CustomPropertyDrawer(typeof(TitleAttribute))]
     public class TitleDrawer : PropertyDrawer
     {

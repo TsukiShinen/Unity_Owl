@@ -1,10 +1,9 @@
+using OwlAttribute;
 using UnityEditor;
 using UnityEngine;
 
 namespace OwlEditor
 {
-    public class EnumPagingAttribute : PropertyAttribute { }
-
     [CustomPropertyDrawer(typeof(EnumPagingAttribute))]
     public class EnumPagingDrawer : PropertyDrawer
     {

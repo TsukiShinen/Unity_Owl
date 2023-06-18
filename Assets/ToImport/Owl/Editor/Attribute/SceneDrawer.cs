@@ -1,3 +1,4 @@
+using OwlAttribute;
 using System;
 using System.Linq;
 using UnityEditor;
@@ -5,8 +6,6 @@ using UnityEngine;
 
 namespace OwlEditor
 {
-    public class SceneAttribute : PropertyAttribute { }
-
     [CustomPropertyDrawer(typeof(SceneAttribute))]
     public class SceneDrawer : PropertyDrawer
     {

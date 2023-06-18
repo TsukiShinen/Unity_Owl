@@ -1,20 +1,10 @@
-using Owl.ditor;
+using OwlAttribute;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
 namespace OwlEditor
 {
-    public class OnValueChangedAttribute : PropertyAttribute
-    {
-        public string CallbackMethodName { get; }
-
-        public OnValueChangedAttribute(string callbackMethodName)
-        {
-            CallbackMethodName = callbackMethodName;
-        }
-    }
-
     [CustomEditor(typeof(MonoBehaviour), true)]
     public class OnValueChangedDrawer : Editor
     {

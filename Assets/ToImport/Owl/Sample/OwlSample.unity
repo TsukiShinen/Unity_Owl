@@ -291,7 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: TestMovement
   _sceneId: 0
-  _enumPaging: 1
+  _enumPaging: 0
   _enumPagingWithDebug: 1
 --- !u!4 &2110931977
 Transform:

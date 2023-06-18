@@ -1,4 +1,4 @@
-using OwlEditor;
+using OwlAttribute;
 using UnityEngine;
 
 public class TestEditor : MonoBehaviour
