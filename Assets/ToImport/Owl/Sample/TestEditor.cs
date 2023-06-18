@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class TestEditor : MonoBehaviour
 {
-    [Header("Scenes")]
+    [Title("Scenes")]
     [SerializeField, Scene] private string _sceneName;
     [SerializeField, Scene] private int _sceneId;
 
-    [Header("Enums")]
+    [Title("Enums")]
     [SerializeField, EnumPaging] private Test _enumPaging;
     [SerializeField, EnumPaging, OnValueChanged("OnEnumChanged")] private Test _enumPagingWithDebug;
 

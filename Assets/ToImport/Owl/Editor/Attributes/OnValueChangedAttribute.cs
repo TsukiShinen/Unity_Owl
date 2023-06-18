@@ -1,3 +1,4 @@
+using Owl.ditor;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
@@ -32,7 +33,7 @@ namespace OwlEditor
             {
                 if (property.propertyType != SerializedPropertyType.Generic)
                 {
-                    OnValueChangedAttribute attribute = GetCustomAttribute<OnValueChangedAttribute>(property);
+                    OnValueChangedAttribute attribute = OwlEditorUtils.GetCustomAttribute<OnValueChangedAttribute>(property);
                     if (attribute != null)
                     {
                         string methodName = attribute.CallbackMethodName;
@@ -71,19 +72,6 @@ namespace OwlEditor
                 methodInfo.Invoke(targetObject, null);
                 shouldInvokeCallback = false;
             }
-        }
-
-        private TAttribute GetCustomAttribute<TAttribute>(SerializedProperty property) where TAttribute : System.Attribute
-        {
-            System.Type targetType = property.serializedObject.targetObject.GetType();
-            FieldInfo fieldInfo = targetType.GetField(property.name, System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
-            return fieldInfo?.GetCustomAttribute<TAttribute>();
-        }
-
-        private System.Collections.IEnumerator DelayedCallback(float delay, System.Action callback)
-        {
-            yield return new WaitForSeconds(delay);
-            callback?.Invoke();
         }
     }
 }
