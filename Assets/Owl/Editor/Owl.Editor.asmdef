@@ -1,0 +1,18 @@
+{
+    "name": "Owl.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b07fdef4291b0234faa1b9faa33ba321"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
