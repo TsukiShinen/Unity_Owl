@@ -46,7 +46,7 @@ namespace Owl.Editor.Utility
             ValidatorAttribute[] validatorAttributes = PropertyUtility.GetAttributes<ValidatorAttribute>(property);
             foreach (var validatorAttribute in validatorAttributes)
             {
-                validatorAttribute.ValidateProperty(property);
+                validatorAttribute.GetValidator().ValidateProperty(property);
             }
 
             EditorGUI.BeginChangeCheck();
