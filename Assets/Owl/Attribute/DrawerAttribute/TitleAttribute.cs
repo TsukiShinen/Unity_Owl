@@ -2,7 +2,7 @@
 
 namespace Owl.Attribute
 {
-    public class TitleAttribute : PropertyAttribute
+    public class TitleAttribute : DrawerAttribute
     {
         public string Name { get; }
 

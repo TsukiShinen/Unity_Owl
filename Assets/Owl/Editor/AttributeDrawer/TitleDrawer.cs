@@ -6,11 +6,12 @@ using UnityEngine;
 namespace Owl.Editor
 {
     [CustomPropertyDrawer(typeof(TitleAttribute))]
-    public class TitleDrawer : PropertyDrawer
+    public class TitleDrawer : PropertyDrawerBase
     {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+
+        protected override void OnGUI_Internal(Rect rect, SerializedProperty property, GUIContent label)
         {
-            EditorGUI.BeginProperty(position, label, property);
+            EditorGUI.BeginProperty(rect, label, property);
 
             TitleAttribute attribute = PropertyUtility.GetAttribute<TitleAttribute>(property);
 
@@ -21,7 +22,7 @@ namespace Owl.Editor
             gui.padding.top = 10;
 
             GUILayout.Space(15);
-            EditorGUI.LabelField(position, attribute.Name, gui); 
+            EditorGUI.LabelField(rect, attribute.Name, gui);
             Rect lineRect = EditorGUILayout.GetControlRect(false, 1);
             lineRect.height = 1;
             EditorGUI.DrawRect(lineRect, Color.white);

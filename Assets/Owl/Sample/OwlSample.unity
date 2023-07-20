@@ -289,10 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0662fe1a61bd11849916d92969451cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: TestMovement
-  _sceneId: 0
-  _enumPaging: 0
-  _enumPagingWithDebug: 1
+  show: 1
+  scene: SampleScene
 --- !u!4 &2110931977
 Transform:
   m_ObjectHideFlags: 0

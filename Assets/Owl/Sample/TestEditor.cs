@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TestEditor : MonoBehaviour
 {
-    [SerializeField] private bool integer;
-    [SerializeField] private string str;
+    [Title("Test")]
+    [SerializeField] private bool show;
+    [SerializeField, Scene, ShowIf("show")] private string scene;
 }

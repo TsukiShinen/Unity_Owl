@@ -145,6 +145,16 @@ namespace Owl.Editor.Utility
             EditorGUI.DrawRect(rect, color);
         }
 
+        public static void HelpBox(Rect rect, string message, MessageType type, UnityEngine.Object context = null, bool logToConsole = false)
+        {
+            EditorGUI.HelpBox(rect, message, type);
+
+            if (logToConsole)
+            {
+                DebugLogMessage(message, type, context);
+            }
+        }
+
         public static void HelpBox_Layout(string message, MessageType type, UnityEngine.Object context = null, bool logToConsole = false)
         {
             EditorGUILayout.HelpBox(message, type);
